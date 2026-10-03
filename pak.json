@@ -1,0 +1,15 @@
+{
+  "name": "BaseOS Updater",
+  "version": "v1.0.0",
+  "type": "TOOL",
+  "description": "Updates BaseOS on Anbernic RG XX devices over WiFi.",
+  "author": "SundownerSport",
+  "repo_url": "https://github.com/SundownerSport/nextui-baseos-updater",
+  "release_filename": "BaseOS.Updater.pak.zip",
+  "changelog": {
+    "v1.0.0": "First release."
+  },
+  "platforms": [
+    "h700"
+  ]
+}
