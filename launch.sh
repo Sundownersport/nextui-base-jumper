@@ -10,7 +10,7 @@ PAK_DIR="$(dirname "$0")"
 cd "$PAK_DIR" || exit 1
 
 SD_ROOT="${SDCARD_PATH:-/mnt/SDCARD}"
-LOG="${LOGS_PATH:-$SD_ROOT}/BaseOS Updater.txt"
+LOG="${LOGS_PATH:-$SD_ROOT}/Base Jumper.txt"
 API="https://api.github.com/repos/pvaibhav/BaseOS/releases/latest"
 MANUAL_HELP="Download your model's .bosupd from github.com/pvaibhav/BaseOS, copy it to the root of your SD card and restart."
 TMP=/tmp/baseos_updater

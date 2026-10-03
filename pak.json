@@ -1,12 +1,13 @@
 {
-  "name": "BaseOS Updater",
-  "version": "v1.0.0",
+  "name": "Base Jumper",
+  "version": "v1.0.1",
   "type": "TOOL",
   "description": "Updates BaseOS on Anbernic RG XX devices over WiFi.",
   "author": "SundownerSport",
-  "repo_url": "https://github.com/SundownerSport/nextui-baseos-updater",
-  "release_filename": "BaseOS.Updater.pak.zip",
+  "repo_url": "https://github.com/SundownerSport/nextui-base-jumper",
+  "release_filename": "Base.Jumper.pak.zip",
   "changelog": {
+    "v1.0.1": "Renamed to Base Jumper.",
     "v1.0.0": "First release."
   },
   "platforms": [

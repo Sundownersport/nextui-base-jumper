@@ -1,4 +1,4 @@
-# BaseOS Updater
+# Base Jumper
 
 A NextUI pak that updates [BaseOS](https://github.com/pvaibhav/BaseOS) on Anbernic RG XX devices over WiFi.
 
@@ -6,13 +6,13 @@ It checks for a newer BaseOS release, downloads your model's `.bosupd` to the ro
 
 ## Install
 
-Get it from the Pak Store, or download `BaseOS.Updater.pak.zip` from [Releases](https://github.com/SundownerSport/nextui-baseos-updater/releases), unzip it into a folder named `BaseOS Updater.pak` and copy that folder to `Tools/h700/` on your SD card.
+Get it from the Pak Store, or download `Base.Jumper.pak.zip` from [Releases](https://github.com/SundownerSport/nextui-base-jumper/releases), unzip it into a folder named `Base Jumper.pak` and copy that folder to `Tools/h700/` on your SD card.
 
 ## Use
 
-Connect to WiFi, then open **Tools > BaseOS Updater**. Keep the device charged or plugged in while BaseOS installs the update.
+Connect to WiFi, then open **Tools > Base Jumper**. Keep the device charged or plugged in while BaseOS installs the update.
 
-Log: `.userdata/h700/logs/BaseOS Updater.txt`
+Log: `.userdata/h700/logs/Base Jumper.txt`
 
 ## Credits
 
