@@ -39,8 +39,16 @@ busy_start() {
     BUSY_PID=$!
 }
 
+# A presenter still starting up swallows SIGTERM and never exits.
 busy_stop() {
-    [ -n "$BUSY_PID" ] && kill "$BUSY_PID" 2> /dev/null && wait "$BUSY_PID" 2> /dev/null
+    [ -n "$BUSY_PID" ] || return 0
+    kill "$BUSY_PID" 2> /dev/null
+    for _i in 1 2 3 4 5 6 7 8 9 10; do
+        kill -0 "$BUSY_PID" 2> /dev/null || break
+        sleep 0.2
+    done
+    kill -9 "$BUSY_PID" 2> /dev/null
+    wait "$BUSY_PID" 2> /dev/null
     BUSY_PID=""
 }
 
@@ -93,10 +101,20 @@ log "installed ${INSTALLED:-unknown}, target ${TARGET:-unknown}"
 
 ask "BaseOS ${INSTALLED:-(unknown version)} is installed.\n\nCheck for a newer one?" "CHECK" || exit 0
 
+NO_WIFI="WiFi is off or not connected.\n\nTurn it on in Settings, then try again."
+awk '$2 == "00000000" { found = 1 } END { exit !found }' /proc/net/route 2> /dev/null || bail "$NO_WIFI"
+
 busy_start "Checking for a BaseOS update..."
-if ! curl -sf -m 20 -o "$TMP/release.json" "$API"; then
-    bail "Could not reach GitHub to look for a BaseOS update.\n\nMake sure WiFi is on and connected in Settings, then try again."
-fi
+timeout 30 curl -sf --connect-timeout 10 -m 20 -o "$TMP/release.json" "$API"
+RC=$?
+log "release check: curl exit $RC"
+case $RC in
+    0) ;;
+    6 | 7) bail "$NO_WIFI" ;;
+    35 | 60) bail "Could not make a secure connection to GitHub. This usually means the date and time are wrong.\n\nSet them with the Clock tool, then try again." ;;
+    28 | 124 | 143) bail "GitHub took too long to answer. Check your WiFi signal and try again." ;;
+    *) bail "Could not reach GitHub to look for a BaseOS update.\n\nMake sure WiFi is on and connected in Settings, then try again." ;;
+esac
 busy_stop
 
 LATEST="$(sed -n 's/^ *"tag_name": *"v\{0,1\}\([^"]*\)".*/\1/p' "$TMP/release.json" | head -n 1)"
