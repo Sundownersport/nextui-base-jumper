@@ -7,7 +7,7 @@
   "repo_url": "https://github.com/SundownerSport/nextui-base-jumper",
   "release_filename": "Base.Jumper.pak.zip",
   "changelog": {
-    "v1.0.2": "No longer hangs on the checking screen. Tells you when WiFi is off or the date is wrong.",
+    "v1.0.2": "No longer hangs on the checking screen. Tells you when WiFi is off or the date is wrong. Safer download.",
     "v1.0.1": "Renamed to Base Jumper.",
     "v1.0.0": "First release."
   },
