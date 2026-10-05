@@ -141,13 +141,13 @@ fi
 
 battery_ok || bail "Please charge your device to at least 15%, or plug it in, then try again."
 
-ask "BaseOS $LATEST is available (you have ${INSTALLED:-an unknown version}).\n\nDownload and install it now?" "INSTALL" || {
+ask "BaseOS $LATEST is available\n(you have ${INSTALLED:-an unknown version}).\n\nDownload and install it now?" "INSTALL" || {
     log "cancelled"
     exit 0
 }
 
 PART="$SD_ROOT/$ASSET_NAME.part"
-busy_start "Downloading BaseOS $LATEST ($(( ${ASSET_SIZE:-0} / 1048576 )) MiB)...\n\nPlease wait."
+busy_start "Downloading BaseOS $LATEST\n($(( ${ASSET_SIZE:-0} / 1048576 )) MiB)...\n\nPlease wait."
 curl -sfL --connect-timeout 10 -m 1800 -o "$PART" "$ASSET_URL"
 RC=$?
 log "download: curl exit $RC"
