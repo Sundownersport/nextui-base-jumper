@@ -1,18 +1,20 @@
 {
   "name": "Base Jumper",
-  "version": "v1.0.3",
+  "version": "v1.1.0",
   "type": "TOOL",
-  "description": "Updates BaseOS on Anbernic RG XX devices over WiFi.",
+  "description": "Updates BaseOS on Anbernic RG XX devices and the Miyoo Flip over WiFi.",
   "author": "SundownerSport",
   "repo_url": "https://github.com/SundownerSport/nextui-base-jumper",
   "release_filename": "Base.Jumper.pak.zip",
   "changelog": {
+    "v1.1.0": "Supports BaseOS for the Miyoo Flip (my355).",
     "v1.0.3": "Long messages no longer split mid-line.",
     "v1.0.2": "No longer hangs on the checking screen. Tells you when WiFi is off or the date is wrong. Safer download.",
     "v1.0.1": "Renamed to Base Jumper.",
     "v1.0.0": "First release."
   },
   "platforms": [
-    "h700"
+    "h700",
+    "my355"
   ]
 }

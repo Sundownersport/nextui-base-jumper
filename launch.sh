@@ -5,11 +5,19 @@ cd "$PAK_DIR" || exit 1
 
 SD_ROOT="${SDCARD_PATH:-/mnt/SDCARD}"
 LOG="${LOGS_PATH:-$SD_ROOT}/Base Jumper.txt"
-API="https://api.github.com/repos/pvaibhav/BaseOS/releases/latest"
-MANUAL_HELP="Download your model's .bosupd from github.com/pvaibhav/BaseOS, copy it to the root of your SD card and restart."
+case "$PLATFORM" in
+    h700) REPO="pvaibhav/BaseOS" ;;
+    my355) REPO="apommel/baseos-my355" ;;
+    *)
+        echo "$(date '+%Y-%m-%d %H:%M:%S') unsupported platform: ${PLATFORM:-unset}" > "$LOG"
+        exit 1
+        ;;
+esac
+API="https://api.github.com/repos/$REPO/releases/latest"
+MANUAL_HELP="Download your model's .bosupd from github.com/$REPO, copy it to the root of your SD card and restart."
 NO_WIFI="WiFi is off or not connected.\n\nTurn it on in Settings, then try again."
 TMP=/tmp/baseos_updater
-PRESENTER="$PAK_DIR/bin/minui-presenter"
+PRESENTER="$PAK_DIR/bin/$PLATFORM/minui-presenter"
 
 mkdir -p "$TMP"
 rm -f "$SD_ROOT"/baseos-*.bosupd.part
